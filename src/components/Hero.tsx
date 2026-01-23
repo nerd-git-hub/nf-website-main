@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
     return (
-        <div className="relative w-full min-h-[100dvh] h-[100dvh] overflow-hidden flex flex-col font-comic">
-            {/* Background Image (Absolute) */}
-            <div className="absolute inset-0 z-0">
+        <div className="relative w-full h-[100dvh] min-h-[100dvh] overflow-hidden font-comic bg-black">
+            {/* Background Image (Fixed, covers full screen) */}
+            <div className="fixed inset-0 w-full h-full z-0">
                 <img
                     src="/backdrop.png"
                     alt="Background"
@@ -15,8 +15,8 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-black/10"></div>
             </div>
 
-            {/* Top Banner (Sticky at top, natural flow) */}
-            <div className="sticky top-0 w-full z-50 pointer-events-none">
+            {/* Top Banner (Fixed at top) */}
+            <div className="fixed top-0 left-0 right-0 w-full z-50 pointer-events-none">
                 <img
                     src="/colaborate_1.png"
                     alt="Collaborate with us"
@@ -24,8 +24,8 @@ export default function Hero() {
                 />
             </div>
 
-            {/* Main Content Area (Fills remaining space, centered) */}
-            <div className="relative z-10 flex-1 flex flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-6 md:px-8">
+            {/* Main Content Area (Centered in viewport) */}
+            <div className="relative z-10 w-full h-full flex flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-6 md:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
