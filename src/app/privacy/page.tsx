@@ -1,80 +1,87 @@
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy | NF APP",
-  description: "Privacy policy for the NF APP.",
+import Link from "next/link";
+import { Bangers, Roboto_Condensed } from "next/font/google";
+
+import './privacy.css';
+
+const PrivacyPolicy = () => {
+    return (
+        <div className="policy-container">
+            <div className="policy-card">
+                <Link href="/" className="back-link">← BACK TO HQ</Link>
+                <h1 className="policy-title">PRIVACY POLICY</h1>
+                <div className="classifed-stamp">CLASSIFIED</div>
+
+                <div className="policy-content">
+                    <p className="update-date">LAST UPDATED: FEBRUARY 2026</p>
+
+                    <section>
+                        <p>NITTFEST is the official mobile application of the annual inter-department cultural fest of the National Institute of Technology Tiruchirappalli.</p>
+                        <p>This Privacy Policy explains how we collect, use, and protect your information when you use the NITTFEST app.</p>
+                    </section>
+
+                    <section>
+                        <h2>1. INFORMATION WE COLLECT</h2>
+                        <ul className="comic-list">
+                            <li>NAME</li>
+                            <li>ROLL NUMBER / USER ID</li>
+                            <li>DEPARTMENT DETAILS</li>
+                            <li>AUTHENTICATION CREDENTIALS (PASSWORD AND PIN, SECURELY STORED IN ENCRYPTED FORM)</li>
+                            <li>NF CREDITS BALANCE AND TRANSACTION RECORDS</li>
+                            <li>BASIC APP USAGE INFORMATION</li>
+                        </ul>
+                        <p className="note">NOTE: WE DO NOT COLLECT PAYMENT CARD INFORMATION, BANK DETAILS, HEALTH DATA, LOCATION DATA, OR ADVERTISING IDENTIFIERS.</p>
+                    </section>
+
+                    <section>
+                        <h2>2. HOW WE USE YOUR INFORMATION</h2>
+                        <p>WE USE THE COLLECTED INFORMATION SOLELY FOR THE FOLLOWING PURPOSES:</p>
+                        <ul className="comic-list">
+                            <li>TO AUTHENTICATE USERS</li>
+                            <li>TO ENABLE ACCESS TO FEST FEATURES</li>
+                            <li>TO MANAGE NF CREDITS</li>
+                            <li>TO DISPLAY LEADERBOARDS AND EVENT PARTICIPATION</li>
+                            <li>TO MAINTAIN SECURITY AND PREVENT UNAUTHORIZED ACCESS</li>
+                            <li>TO IMPROVE APP PERFORMANCE AND RELIABILITY</li>
+                        </ul>
+                        <p className="disclaimer">WE DO NOT USE YOUR DATA FOR ADVERTISING OR MARKETING PURPOSES.</p>
+                    </section>
+
+                    <section>
+                        <h2>3. DATA SHARING</h2>
+                        <p>WE DO NOT SELL, RENT, OR TRADE YOUR PERSONAL INFORMATION.</p>
+                        <p>YOUR DATA IS NOT SHARED WITH THIRD-PARTY ADVERTISERS OR DATA BROKERS. INFORMATION IS USED STRICTLY FOR FEST-RELATED OPERATIONS AND APP FUNCTIONALITY.</p>
+                    </section>
+
+                    <section>
+                        <h2>4. DATA SECURITY</h2>
+                        <p>WE USE SECURE COMMUNICATION PROTOCOLS (HTTPS) AND APPROPRIATE TECHNICAL SAFEGUARDS TO PROTECT USER DATA. AUTHENTICATION CREDENTIALS ARE STORED IN ENCRYPTED OR HASHED FORM.</p>
+                    </section>
+
+                    <section>
+                        <h2>5. DATA RETENTION</h2>
+                        <p>USER DATA IS RETAINED ONLY FOR THE DURATION NECESSARY TO SUPPORT FEST OPERATIONS AND RELATED ADMINISTRATIVE REQUIREMENTS.</p>
+                    </section>
+
+                    <section>
+                        <h2>6. CHILDREN’S PRIVACY</h2>
+                        <p>THE NITTFEST APP IS INTENDED FOR USE BY STUDENTS AND PARTICIPANTS OF NIT TIRUCHIRAPPALLI. IT IS NOT DIRECTED TOWARD CHILDREN UNDER THE AGE OF 13.</p>
+                    </section>
+
+                    <section>
+                        <h2>7. CHANGES TO THIS POLICY</h2>
+                        <p>WE MAY UPDATE THIS PRIVACY POLICY FROM TIME TO TIME. ANY CHANGES WILL BE REFLECTED ON THIS PAGE WITH AN UPDATED REVISION DATE.</p>
+                    </section>
+
+                    <section className="contact-section">
+                        <h2>8. CONTACT US</h2>
+                        <p>IF YOU HAVE ANY QUESTIONS REGARDING THIS PRIVACY POLICY, PLEASE CONTACT:</p>
+                        <div className="email-bubble">EMAIL: developer@nittfest.in</div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    );
 };
 
-export default function PrivacyPage() {
-  return (
-    <main className="min-h-screen px-4 py-12">
-      <div className="mx-auto w-full max-w-3xl rounded-2xl border-4 border-comic-black bg-comic-yellow p-6 shadow-comic md:p-10">
-        <h1 className="font-comic text-4xl text-comic-black md:text-5xl">
-          Privacy Policy
-        </h1>
-
-        <div className="mt-6 space-y-4 font-body text-base leading-relaxed text-comic-black md:text-lg">
-          <p>This privacy policy applies to the app NF APP.</p>
-
-          <p>
-            We respect your privacy. This app does not collect, store, or share any
-            personal user data.
-          </p>
-
-          <section>
-            <h2 className="font-comic text-2xl md:text-3xl">
-              Information Collection and Use:
-            </h2>
-            <p className="mt-2">
-              The app may use basic device information required for proper
-              functioning (such as network state) but does not collect personally
-              identifiable information like name, email, phone number, or location.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="font-comic text-2xl md:text-3xl">
-              Third-Party Services:
-            </h2>
-            <p className="mt-2">
-              This app does not use third-party services that collect user data.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="font-comic text-2xl md:text-3xl">
-              Children&apos;s Information:
-            </h2>
-            <p className="mt-2">
-              This app is not designed to knowingly collect data from children under
-              the age of 13.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="font-comic text-2xl md:text-3xl">Changes:</h2>
-            <p className="mt-2">
-              This policy may be updated in the future. Any changes will be reflected
-              on this page.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="font-comic text-2xl md:text-3xl">Contact:</h2>
-            <p className="mt-2">
-              If you have any questions about this Privacy Policy, contact us at:
-            </p>
-            <p className="mt-2">
-              <a
-                className="underline decoration-comic-black underline-offset-4"
-                href="mailto:developer@nittfest.in"
-              >
-                developer@nittfest.in
-              </a>
-            </p>
-          </section>
-        </div>
-      </div>
-    </main>
-  );
-}
+export default PrivacyPolicy;
