@@ -1,65 +1,124 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function Home() {
+  const nittfestTextRef = useRef(null);
+  const nfLogoRef = useRef(null);
+  const dottedTextureRef = useRef(null);
+  const bgRef = useRef(null);
+  const blackbarRef = useRef(null);
+
+  useEffect(() => {
+    // Use manual scroll restoration to prevent jump on refresh
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    // Reset scroll on load and temporarily lock it
+    window.scrollTo(0, 0);
+    document.body.style.overflow = "hidden";
+
+    // Background image scrolls up securely to 580px
+    gsap.fromTo(
+      bgRef.current,
+      { marginTop: 0 },
+      {
+        marginTop: -580,
+        duration: 1.5,
+        ease: "power3.inOut",
+        onComplete: () => {
+          // Unlock scroll after animation finishes
+          document.body.style.overflow = "auto";
+          // Reveal blackbar fixed at bottom
+          gsap.to(blackbarRef.current, { opacity: 1, duration: 0.8, ease: "power2.out" });
+        }
+      }
+    );
+
+    // NITTFEST text drops in from top
+    gsap.fromTo(
+      nittfestTextRef.current,
+      { y: -200, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.2 }
+    );
+
+    // NF logo fades up from below
+    gsap.fromTo(
+      nfLogoRef.current,
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1.0, ease: "power3.out", delay: 0.7 }
+    );
+
+    // Dotted texture fades in after logo
+    gsap.fromTo(
+      dottedTextureRef.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 1.0, ease: "power2.out", delay: 0.2 }
+    );
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="relative min-h-screen bg-[#BC1D1A]">
+      {/* 1. Full Width Landing Page Asset */}
+      <div className="relative w-full overflow-hidden">
+
+        {/* Wrapper for image so it animates and scales alone */}
+        <div
+          ref={bgRef}
+          className="relative w-full h-auto block transform translate-x-[70px] scale-110 origin-right"
+        >
+          <img
+            src="/assets/landingpage/landingpageclear.jpg"
+            alt="NITTFEST Landing Page"
+            className="w-full h-auto block"
+          />
+        </div>
+
+        {/* Blackbar positioned firmly at the bottom of the screen */}
+        <img
+          ref={blackbarRef}
+          src="/assets/landingpage/blackbar.svg"
+          alt="Black Cover"
+          className="absolute top-209 left-[23%] w-[50%] z-50 pointer-events-none opacity-0"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        {/* NITTFEST Text SVG — top centre overlay */}
+        <div className="absolute top-0 left-0 right-0 flex flex-col items-center pointer-events-none gap-4">
+          <img
+            ref={nittfestTextRef}
+            src="/assets/landingpage/nittfest text.svg"
+            alt="NITTFEST"
+            className="w-[clamp(200px,40vw,560px)] h-auto"
+          />
+          <div className="absolute top-0 left-0 right-0 flex flex-col items-center pointer-events-none gap-4">
+            <img
+              src="/assets/landingpage/nf3dsvg.svg"
+              alt="NF Logo"
+              className="w-[clamp(200px,150vw,250px)] h-auto mt-40"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
+
+          <img
+            src="/assets/landingpage/comikaze.png"
+            alt="Black Cover"
+            className="absolute top-100 bottom-0 left-120 w-200 z-50 pointer-events-none"
+          />
+
+
         </div>
-      </main>
-    </div>
+
+      </div>
+
+      {/* Thanos Hand Snap Hamburger Menu Button */}
+      <div className="fixed top-8 right-8 z-100 cursor-pointer hover:scale-110 transition-transform duration-200">
+        <img
+          src="/assets/landingpage/hamburger/thanos-handsnap.svg"
+          alt="Menu"
+          className="w-12 h-12 md:w-16 md:h-16 drop-shadow-lg"
+        />
+      </div>
+    </main>
   );
 }
