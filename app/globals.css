@@ -14,6 +14,14 @@
 }
 
 @font-face {
+  font-family: 'Anime Ace';
+  src: url('/assets/fonts/animeace.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Homoarakhn';
   src: url('/fonts/Homoarakhn.ttf') format('truetype');
   font-weight: normal;
@@ -61,6 +69,28 @@ h4,
 @layer utilities {
   .comic-text {
     font-family: var(--font-homoarakhn);
+  }
+
+  .font-anime-ace {
+    font-family: 'Anime Ace', sans-serif;
+  }
+
+  .animate-marquee {
+    animation: scroll 40s linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: scroll 40s linear infinite reverse;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
   }
 }
 
