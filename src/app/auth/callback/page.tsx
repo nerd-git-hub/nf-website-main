@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 
-export default function DAuthCallback() {
+function DAuthCallbackContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const { setAuthData } = useAuth();
@@ -84,5 +84,22 @@ export default function DAuthCallback() {
                 )}
             </div>
         </div>
+    );
+}
+
+export default function DAuthCallback() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center bg-comic-red p-4">
+                <div className="bg-white p-8 rounded-lg shadow-xl text-center max-w-md w-full border-4 border-black">
+                    <div className="flex flex-col items-center">
+                        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+                        <p className="font-roboto text-gray-700">Loading...</p>
+                    </div>
+                </div>
+            </div>
+        }>
+            <DAuthCallbackContent />
+        </Suspense>
     );
 }

@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&display=swap');
+
+/* ===================== PAGE LAYOUT ===================== */
+.aboutus-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #fca019;
+  /* Solid orange-yellow background */
+  overflow-x: hidden;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+/* ===================== TORN PAPER EDGE ===================== */
+.torn-paper-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  line-height: 0;
+  opacity: 0;
+}
+
+.torn-paper-edge .torn-border-img {
+  width: 100vw;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+/* ===================== MAIN CONTENT ===================== */
+.aboutus-content {
+  position: relative;
+  z-index: 5;
+  padding: 180px 60px 200px 60px;
+  /* Increased top padding significantly to clear top-border.png */
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* ===================== TITLE ===================== */
+.aboutus-title {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(4.5rem, 12vw, 9rem);
+  color: #FFD700;
+  text-shadow:
+    5px 5px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000;
+  letter-spacing: 6px;
+  margin-bottom: 40px;
+  opacity: 0;
+  padding-left: 20px;
+  transform: rotate(-3deg) skewX(-2deg);
+  transform-origin: left center;
+  line-height: 1;
+}
+
+/* ===================== TEXT BOX ===================== */
+.aboutus-textbox {
+  background: #969696;
+  border: 4px solid #000;
+  padding: 35px 40px;
+  max-width: 850px;
+  width: 70%;
+  transform: rotate(-2deg);
+  box-shadow:
+    0 0 0 12px #fff,
+    0 0 0 16px #000,
+    12px 12px 0 16px #000;
+  position: relative;
+  opacity: 0;
+  margin-left: 40px;
+  z-index: 5;
+}
+
+.aboutus-textbox p {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  line-height: 1.2;
+  color: #000;
+  letter-spacing: 2px;
+  margin: 0;
+  font-weight: 500;
+  text-shadow: none;
+}
+
+/* ===================== SPIDER-MAN ===================== */
+.spiderman-container {
+  position: absolute;
+  top: -20px;
+  right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 20;
+}
+
+.spiderman-rope {
+  width: 2px;
+  height: 160px;
+  background: #fff;
+  transform-origin: top center;
+}
+
+.spiderman-character {
+  opacity: 0;
+  filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.35));
+}
+
+/* ===================== SPEECH BUBBLE ===================== */
+.speech-bubble {
+  position: absolute;
+  right: 5%;
+  top: 60%;
+  background: #fff;
+  border: 4px solid #000;
+  border-radius: 50%;
+  padding: 25px 35px;
+  max-width: 320px;
+  opacity: 0;
+  box-shadow: 5px 5px 0 #000;
+  transform-origin: center right;
+  z-index: 25;
+}
+
+/* Tail pointing up-right to Spiderman */
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  right: 40px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 25px solid #000;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: -18px;
+  right: 42px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 18px solid #fff;
+}
+
+.speech-bubble span {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  color: #FFD700;
+  text-shadow:
+    2px 2px 0 #000,
+    -1.5px -1.5px 0 #000,
+    1.5px -1.5px 0 #000,
+    -1.5px 1.5px 0 #000,
+    1.5px 1.5px 0 #000;
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+  display: block;
+  text-align: center;
+  transform: rotate(-4deg);
+}
+
+/* ===================== CITY SKYLINE ===================== */
+.city-skyline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.city-skyline .cityline-img {
+  width: 100vw;
+  height: auto;
+  display: block;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1024px) {
+  .aboutus-content {
+    padding: 140px 40px 100px 40px;
+  }
+
+  .aboutus-title {
+    font-size: clamp(3.5rem, 10vw, 6rem);
+  }
+
+  .aboutus-textbox {
+    width: 80%;
+  }
+
+  .spiderman-container {
+    right: 2%;
+    top: 50px;
+  }
+
+  .speech-bubble {
+    right: 2%;
+    top: 60%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutus-content {
+    padding: 120px 24px 80px 24px;
+    align-items: center;
+    /* Center main flow */
+  }
+
+  .aboutus-title {
+    font-size: clamp(3rem, 12vw, 4.5rem);
+    margin-bottom: 30px;
+    padding-left: 0;
+    text-align: center;
+    transform: rotate(-2deg);
+  }
+
+  .aboutus-textbox {
+    width: 95%;
+    max-width: 100%;
+    padding: 25px 25px;
+    margin-left: 0;
+    transform: rotate(0);
+    box-shadow:
+      0 0 0 6px #fff,
+      0 0 0 10px #000,
+      6px 6px 0 10px #000;
+  }
+
+  .aboutus-textbox p {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  /* Drop the absolute positioning, let Spiderman hang below text box */
+  .spiderman-container {
+    position: relative;
+    top: 0;
+    right: auto;
+    margin-top: 0px;
+  }
+
+  .spiderman-rope {
+    height: 60px;
+  }
+
+  .spiderman-character img {
+    width: 140px;
+    height: auto;
+  }
+
+  /* Make speech bubble sit normally relative to Spiderman */
+  .speech-bubble {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin: 20px auto 40px;
+    max-width: 250px;
+    transform: rotate(0);
+    padding: 20px;
+  }
+
+  /* Remove directional tails since layout is vertical */
+  .speech-bubble::before,
+  .speech-bubble::after {
+    display: none;
+  }
+
+  .speech-bubble span {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutus-content {
+    padding: 100px 16px 60px 16px;
+  }
+
+  .aboutus-title {
+    font-size: 3rem;
+    letter-spacing: 3px;
+    text-shadow:
+      3px 3px 0 #000,
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+  }
+
+  .aboutus-textbox {
+    width: 100%;
+    padding: 20px 15px;
+    box-shadow:
+      0 0 0 4px #fff,
+      0 0 0 7px #000,
+      4px 4px 0 7px #000;
+  }
+
+  .aboutus-textbox p {
+    font-size: 1.2rem;
+  }
+
+  .spiderman-character img {
+    width: 120px;
+  }
+
+  .spiderman-rope {
+    height: 40px;
+  }
+
+  .speech-bubble {
+    max-width: 220px;
+    margin-top: 15px;
+    padding: 15px;
+  }
+}

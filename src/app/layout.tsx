@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bangers, Roboto_Condensed } from "next/font/google";
+import { Bangers, Roboto_Condensed, Inter } from "next/font/google";
 import "./globals.css";
 
 const bangers = Bangers({
@@ -14,6 +14,11 @@ const roboto = Roboto_Condensed({
   weight: ["400", "700"],
   variable: "--font-roboto",
   display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const viewport: Viewport = {
@@ -42,10 +47,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bangers.variable} ${roboto.variable} antialiased bg-comic-red`}
+        className={`${bangers.variable} ${roboto.variable} ${inter.variable} antialiased bg-comic-red`}
         style={{
           '--font-bangers': bangers.style.fontFamily,
           '--font-roboto': roboto.style.fontFamily,
+          '--font-inter': inter.style.fontFamily,
         } as React.CSSProperties}
       >
         <AuthProvider>

@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --font-bangers: "Bangers", cursive;
+  --font-inter: "Inter", sans-serif;
+  --font-homoarakhn: "Homoarakhn", "Bangers", cursive;
+
+  /* Official Figma Design Tokens */
+  --color-nf-red: #bc1d1a;
+  --color-nf-red-bright: #e41e1e;
+  --color-nf-red-dark: #a51c1a;
+  --color-background: var(--color-nf-red);
+  --color-foreground: #ffffff;
+}
+
+@font-face {
+  font-family: 'Anime Ace';
+  src: url('/assets/fonts/animeace.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Homoarakhn';
+  src: url('/fonts/Homoarakhn.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+.comic-text {
+  font-family: var(--font-bangers);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metallic-text {
+  font-family: var(--font-homoarakhn);
+  background: linear-gradient(to bottom,
+      #ffffff 0%,
+      #a2a2a2 40%,
+      #ffffff 50%,
+      #7a7a7a 60%,
+      #d1d1d1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  text-transform: uppercase;
+}
+
+@layer utilities {
+  .comic-text {
+    font-family: var(--font-homoarakhn);
+  }
+
+  .font-anime-ace {
+    font-family: 'Anime Ace', sans-serif;
+  }
+
+  .animate-marquee {
+    animation: scroll 40s linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: scroll 40s linear infinite reverse;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@font-face {
+  font-family: "GoodTimes";
+  src: url("/fonts/GoodTimesRg-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
