@@ -1,0 +1,642 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@font-face {
+    font-family: 'Ethnocentric';
+    src: url('/fonts/Ethnocentric-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Anime Ace 2.0 BB';
+    src: url('https://db.onlinewebfonts.com/t/eeb6aa54c476b605915f4aaea82655e3.woff2') format('woff2'),
+        url('https://db.onlinewebfonts.com/t/eeb6aa54c476b605915f4aaea82655e3.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ===================== PAGE LAYOUT ===================== */
+.team-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* Multi-colored horizontal gradients matching the image */
+    background: linear-gradient(to bottom,
+            #d46444 0%,
+            #f56e91 20%,
+            #ec4264 40%,
+            #dc5086 60%,
+            #bb6bd9 80%,
+            #9a70db 100%);
+    overflow-x: hidden;
+    font-family: 'Space Mono', monospace;
+    /* Default technical font */
+    color: #000;
+    /* Force text to black, overriding global dark mode */
+}
+
+/* ===================== FLOATING BUBBLES ===================== */
+.hq-bubble,
+.alert-bubble,
+.webops-bubble {
+    position: absolute;
+    background: #fff;
+    border: 3px solid #000;
+    padding: 15px 20px;
+    font-family: 'Bebas Neue', monospace;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    z-index: 50;
+    text-align: center;
+}
+
+.hq-bubble {
+    top: 25px;
+    left: 30px;
+    background: #e921d9;
+    /* Deep hot pink matching reference */
+    color: #000;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.8);
+    font-family: 'Anime Ace 2.0 BB', 'Anime Ace 2.0', 'Anime Ace', 'Bangers', sans-serif;
+    /* Setup fallback map */
+    font-weight: bold;
+    font-style: italic;
+    transform: rotate(-1deg);
+    border: 3px solid #000;
+    border-radius: 0;
+    padding: 12px 20px;
+    white-space: nowrap;
+}
+
+.alert-bubble {
+    top: 5%;
+    right: 5%;
+    border-radius: 20px;
+    font-family: 'Anime Ace 2.0 BB', 'Anime Ace 2.0', 'Bebas Neue', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.alert-bubble::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -25px;
+    /* Adjusting tail to point to right edge */
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 25px solid #000;
+    transform: translateY(-50%);
+}
+
+.alert-bubble::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -19px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 20px solid #fff;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+
+/* Comic jagged speech bubble for 'ALL UNITS REPORT' */
+.webops-bubble {
+    top: 35%;
+    left: 3%;
+    border-radius: 50%;
+    /* Make this more jagged using clip-path in reality, using simplified bubble here */
+    padding: 25px 30px;
+    font-family: 'Anime Ace 2.0 BB', 'Anime Ace 2.0', 'Anime Ace', 'Bangers', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.webops-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 20px solid #000;
+}
+
+.webops-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 22px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 14px solid #fff;
+    z-index: 1;
+}
+
+/* ===================== WINDOWS CONTAINER ===================== */
+.windows-container {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    margin: 80px auto 50px auto;
+    height: 700px;
+    z-index: 10;
+}
+
+/* ===================== GENERIC UI WINDOW ===================== */
+.ui-window {
+    position: absolute;
+    background: #e6e6e6;
+    /* Gray background for windows */
+    border: 4px solid #000;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.window-header {
+    background: #b0b0b0;
+    /* Darker gray header */
+    border-bottom: 4px solid #000;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
+
+.control.close {
+    background: #ff5f56;
+}
+
+.control.minimize {
+    background: #ffbd2e;
+}
+
+.control.expand {
+    background: #27c93f;
+}
+
+.window-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.window-close-btn {
+    background: #de4e4e;
+    color: white;
+    border: 2px solid #000;
+    padding: 2px 6px;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    line-height: 1;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+/* ===================== SPECIFIC WINDOWS ===================== */
+
+/* Top Window (Background) */
+.top-window {
+    top: 0;
+    left: 5%;
+    width: 90%;
+    height: 150px;
+    z-index: 1;
+}
+
+.top-window-content {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* Main Window (Middle) */
+.main-window {
+    top: 100px;
+    left: 10%;
+    width: 80%;
+    height: 600px;
+    z-index: 2;
+}
+
+.main-window-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 100%;
+}
+
+.team-title {
+    font-family: 'Space Mono', monospace;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    transform: scaleX(1.3);
+}
+
+/* Slider Area inside Main */
+.slider-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 0 40px;
+}
+
+.arrow {
+    font-size: 4rem;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.2s;
+    user-select: none;
+    font-family: sans-serif;
+}
+
+.arrow:hover {
+    transform: scale(1.1);
+    color: #000;
+}
+
+/* ===================== ID CARD ===================== */
+.id-card {
+    width: 600px;
+    height: 340px;
+    background: #bcc8da;
+    /* Light grayish blue tint */
+    border: 4px solid #000;
+    border-radius: 6px;
+    transform: rotate(-3deg);
+    box-shadow:
+        6px 6px 0 rgba(0, 0, 0, 0.8),
+        inset 0 0 50px rgba(255, 255, 255, 0.4);
+    display: flex;
+    overflow: hidden;
+}
+
+.id-card-inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    position: relative;
+}
+
+.id-photo-section {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.photo-placeholder {
+    width: 180px;
+    height: 240px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.photo-placeholder img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.person-silhouette {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70%;
+    background: #666;
+    border-radius: 50px 50px 0 0;
+}
+
+.id-details-section {
+    width: 60%;
+    padding-left: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.id-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.webops-logo {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    object-fit: contain;
+}
+
+.access-title {
+    font-family: 'Ethnocentric', sans-serif;
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    letter-spacing: 1px;
+}
+
+.member-info p {
+    font-family: 'Ethnocentric', sans-serif;
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin: 8px 0;
+    letter-spacing: 1px;
+}
+
+.barcode {
+    margin-top: 20px;
+    margin-left: 5px;
+    font-size: 2.5rem;
+    font-weight: normal;
+    letter-spacing: 0;
+    line-height: 1;
+    /* Keep it tight vertically */
+}
+
+/* Server Status inside Main */
+.server-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: auto;
+    font-family: 'Space Mono', monospace;
+    font-size: 1rem;
+}
+
+.scanning-logs p {
+    margin: 4px 0;
+    color: #333;
+}
+
+.clearance-level {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.restricted-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.block {
+    width: 60px;
+    height: 15px;
+    background: #666;
+}
+
+.clearance-level p {
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+/* Terminal Window (Left) */
+.terminal-window {
+    top: 450px;
+    left: 0;
+    width: 320px;
+    height: 200px;
+    z-index: 3;
+}
+
+.terminal-header {
+    background: #dbdbdb;
+    padding: 4px 10px;
+}
+
+.terminal-header .window-title {
+    font-size: 0.8rem;
+}
+
+.terminal-content {
+    background: #e6e6e6;
+    padding: 15px;
+    font-family: 'Space Mono', monospace;
+    font-weight: bold;
+    font-size: 0.85rem;
+    height: 100%;
+}
+
+.terminal-content p {
+    margin: 8px 0;
+}
+
+/* ===================== DESKTOP INDICATOR ===================== */
+/* ===================== DESKTOP INDICATOR ===================== */
+.desktop-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.5rem;
+    color: #fff;
+    opacity: 0.6;
+}
+
+/* ===================== RESPONSIVE DESIGN ===================== */
+
+@media (max-width: 1024px) {
+    .main-window {
+        width: 90%;
+        left: 5%;
+    }
+
+    .windows-container {
+        height: auto;
+        min-height: 800px;
+        margin-top: 100px;
+    }
+
+    .id-card {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .slider-area {
+        padding: 0 10px;
+    }
+
+    .terminal-window {
+        top: 550px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hq-bubble {
+        top: 10px;
+        left: 10px;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        white-space: normal;
+        max-width: 200px;
+    }
+
+    .alert-bubble {
+        top: 10px;
+        right: 10px;
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+
+    .webops-bubble {
+        display: none;
+        /* Hide to reduce clutter on small screens */
+    }
+
+    .windows-container {
+        margin-top: 120px;
+    }
+
+    .top-window {
+        height: auto;
+        min-height: 120px;
+    }
+
+    .top-window-content {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 0.9rem;
+    }
+
+    .main-window {
+        top: 150px;
+        height: auto;
+        min-height: 600px;
+    }
+
+    .team-title {
+        font-size: 2rem;
+        transform: scaleX(1.1);
+    }
+
+    .arrow {
+        font-size: 2.5rem;
+    }
+
+    .id-card {
+        height: auto;
+        min-height: 480px;
+        transform: rotate(0deg);
+        /* Remove tilt on mobile to fit nicely */
+    }
+
+    .id-card-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .id-photo-section {
+        width: 100%;
+        height: auto;
+        justify-content: center;
+    }
+
+    .id-details-section {
+        width: 100%;
+        padding-left: 0;
+        align-items: center;
+    }
+
+    .photo-placeholder {
+        width: 140px;
+        height: 180px;
+    }
+
+    .barcode {
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    .server-status {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .clearance-level {
+        align-items: center;
+    }
+
+    .terminal-window {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    .desktop-indicator {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-title {
+        font-size: 1.5rem;
+    }
+
+    .id-card {
+        min-height: 400px;
+    }
+
+    .barcode {
+        font-size: 1.8rem;
+    }
+
+    .arrow {
+        font-size: 1.8rem;
+    }
+}

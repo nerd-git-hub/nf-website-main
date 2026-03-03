@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&display=swap');
+
+/* ===================== PAGE LAYOUT ===================== */
+.contact-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: #1a1a1a;
+}
+
+/* ===================== MANGA BACKGROUND ===================== */
+.contact-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}
+
+.contact-bg img {
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.15) brightness(0.45);
+}
+
+/* ===================== CHARACTERS ===================== */
+.contact-character-left {
+    position: absolute;
+    left: 2%;
+    bottom: 0;
+    z-index: 8;
+    opacity: 0;
+}
+
+.contact-character-left img {
+    height: 82vh;
+    width: auto;
+    object-fit: contain;
+}
+
+.contact-character-right {
+    position: absolute;
+    right: 12%;
+    bottom: 0;
+    z-index: 8;
+    opacity: 0;
+}
+
+.contact-character-right img {
+    height: 72vh;
+    width: auto;
+    object-fit: contain;
+}
+
+/* ===================== SPEECH BUBBLE ===================== */
+/* Positioned above Itachi's head, to the right — looks like he's speaking */
+.contact-speech-bubble {
+    position: absolute;
+    top: 2%;
+    left: 14%;
+    background: #fff;
+    border: 4px solid #111;
+    border-radius: 50%;
+    padding: 22px 36px;
+    max-width: 360px;
+    min-width: 200px;
+    z-index: 12;
+    opacity: 0;
+    transform: rotate(-3deg);
+    aspect-ratio: 1.7 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Outer triangle tail pointing down-left toward Itachi's head */
+.contact-speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -44px;
+    left: 10%;
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 38px solid transparent;
+    border-top: 48px solid #111;
+}
+
+/* Inner triangle tail (white fill) */
+.contact-speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -28px;
+    left: 12%;
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 24px solid transparent;
+    border-top: 32px solid #fff;
+    z-index: 1;
+}
+
+.contact-speech-bubble span {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(1.6rem, 2.7vw, 2.5rem);
+    color: #FFD700;
+    text-shadow:
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        3px 3px 0 #000;
+    letter-spacing: 2px;
+    line-height: 1.15;
+    display: block;
+    text-align: center;
+    transform: rotate(-2deg);
+}
+
+/* ===================== CONTACT CARD ===================== */
+/* The card sits behind both characters — their backs overlap its edges */
+.contact-card {
+    position: absolute;
+    z-index: 5;
+    background: #9a9a9a;
+    border: 10px solid #e0e0e0;
+    padding: 36px 80px 36px 40px;
+    max-width: 820px;
+    width: 65%;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -45%) rotate(-2deg);
+    box-shadow:
+        0 0 0 2px #333,
+        8px 8px 0 rgba(0, 0, 0, 0.9);
+    opacity: 0;
+}
+
+.contact-card h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+    color: #111;
+    letter-spacing: 2px;
+    margin: 0 0 8px 0;
+    font-weight: 400;
+}
+
+.contact-info {
+    margin-bottom: 24px;
+}
+
+.contact-info p {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    color: #111;
+    letter-spacing: 2px;
+    margin: 0 0 4px 0;
+    line-height: 1.25;
+    font-weight: 400;
+}
+
+.contact-email-section h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.6rem, 2.8vw, 2.6rem);
+    color: #111;
+    letter-spacing: 2px;
+    margin: 0 0 6px 0;
+    font-weight: 400;
+}
+
+.contact-email-section p {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    color: #111;
+    letter-spacing: 2px;
+    margin: 0;
+    line-height: 1.25;
+    font-weight: 400;
+    padding-left: 8px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1024px) {
+    .contact-card {
+        width: 60%;
+    }
+
+    .contact-character-left img {
+        height: 70vh;
+    }
+
+    .contact-character-right img {
+        height: 62vh;
+    }
+
+    .contact-speech-bubble {
+        left: 10%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-speech-bubble {
+        top: 2%;
+        left: 5%;
+        padding: 16px 24px;
+        max-width: 230px;
+        min-width: 140px;
+    }
+
+    .contact-card {
+        left: 50%;
+        transform: translate(-50%, -42%) rotate(-2deg);
+        width: 78%;
+        padding: 26px 26px;
+        border-width: 7px;
+    }
+
+    .contact-character-left {
+        left: -8%;
+    }
+
+    .contact-character-left img {
+        height: 55vh;
+    }
+
+    .contact-character-right {
+        right: -8%;
+    }
+
+    .contact-character-right img {
+        height: 50vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-speech-bubble {
+        top: 1%;
+        left: 2%;
+        padding: 12px 16px;
+        max-width: 180px;
+        min-width: 110px;
+    }
+
+    .contact-speech-bubble span {
+        font-size: 1rem;
+    }
+
+    .contact-card {
+        left: 50%;
+        transform: translate(-50%, -42%) rotate(-2deg);
+        width: 86%;
+        padding: 20px 16px;
+        border-width: 5px;
+    }
+
+    .contact-character-left {
+        left: -16%;
+    }
+
+    .contact-character-left img {
+        height: 40vh;
+    }
+
+    .contact-character-right {
+        right: -16%;
+    }
+
+    .contact-character-right img {
+        height: 38vh;
+    }
+}

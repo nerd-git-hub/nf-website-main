@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <!-- Spider-Man hanging upside down -->
+  <!-- Web string -->
+  <line x1="100" y1="0" x2="100" y2="60" stroke="#888" stroke-width="2"/>
+  
+  <!-- Feet (top, since upside down) -->
+  <ellipse cx="88" cy="65" rx="12" ry="8" fill="#cc0000" stroke="#1a1a2e" stroke-width="1"/>
+  <ellipse cx="112" cy="65" rx="12" ry="8" fill="#cc0000" stroke="#1a1a2e" stroke-width="1"/>
+  
+  <!-- Legs -->
+  <path d="M88 73 Q85 100 90 120" fill="none" stroke="#cc0000" stroke-width="14" stroke-linecap="round"/>
+  <path d="M112 73 Q115 100 110 120" fill="none" stroke="#cc0000" stroke-width="14" stroke-linecap="round"/>
+  
+  <!-- Blue leg stripes -->
+  <path d="M88 73 Q85 100 90 120" fill="none" stroke="#1a1a8e" stroke-width="6" stroke-linecap="round"/>
+  <path d="M112 73 Q115 100 110 120" fill="none" stroke="#1a1a8e" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- Body -->
+  <ellipse cx="100" cy="145" rx="30" ry="35" fill="#cc0000" stroke="#1a1a2e" stroke-width="1.5"/>
+  
+  <!-- Blue body section -->
+  <ellipse cx="100" cy="148" rx="22" ry="25" fill="#1a1a8e"/>
+  
+  <!-- Spider emblem on chest -->
+  <path d="M100 138 L96 145 L100 148 L104 145 Z" fill="#1a1a2e"/>
+  <line x1="100" y1="135" x2="100" y2="155" stroke="#1a1a2e" stroke-width="1"/>
+  <line x1="92" y1="143" x2="108" y2="143" stroke="#1a1a2e" stroke-width="1"/>
+  
+  <!-- Arms -->
+  <path d="M72 140 Q55 155 45 175" fill="none" stroke="#cc0000" stroke-width="12" stroke-linecap="round"/>
+  <path d="M128 140 Q145 155 155 175" fill="none" stroke="#cc0000" stroke-width="12" stroke-linecap="round"/>
+  
+  <!-- Blue arm stripes -->
+  <path d="M72 140 Q55 155 45 175" fill="none" stroke="#1a1a8e" stroke-width="5" stroke-linecap="round"/>
+  <path d="M128 140 Q145 155 155 175" fill="none" stroke="#1a1a8e" stroke-width="5" stroke-linecap="round"/>
+  
+  <!-- Hands -->
+  <circle cx="42" cy="178" r="8" fill="#cc0000" stroke="#1a1a2e" stroke-width="1"/>
+  <circle cx="158" cy="178" r="8" fill="#cc0000" stroke="#1a1a2e" stroke-width="1"/>
+  
+  <!-- Head (at bottom since upside down) -->
+  <ellipse cx="100" cy="200" rx="28" ry="30" fill="#cc0000" stroke="#1a1a2e" stroke-width="2"/>
+  
+  <!-- Web pattern on head -->
+  <line x1="100" y1="170" x2="100" y2="230" stroke="#1a1a2e" stroke-width="0.8" opacity="0.6"/>
+  <line x1="72" y1="200" x2="128" y2="200" stroke="#1a1a2e" stroke-width="0.8" opacity="0.6"/>
+  <path d="M80 175 Q100 185 120 175" fill="none" stroke="#1a1a2e" stroke-width="0.8" opacity="0.6"/>
+  <path d="M76 185 Q100 195 124 185" fill="none" stroke="#1a1a2e" stroke-width="0.8" opacity="0.6"/>
+  <path d="M75 195 Q100 205 125 195" fill="none" stroke="#1a1a2e" stroke-width="0.8" opacity="0.6"/>
+  <path d="M76 205 Q100 215 124 205" fill="none" stroke="#1a1a2e" stroke-width="0.8" opacity="0.6"/>
+  <path d="M80 215 Q100 225 120 215" fill="none" stroke="#1a1a2e" stroke-width="0.8" opacity="0.6"/>
+  
+  <!-- Eyes -->
+  <path d="M85 193 Q82 185 88 185 Q94 185 92 193 Q90 198 87 198 Z" fill="white" stroke="#1a1a2e" stroke-width="1.5"/>
+  <path d="M108 193 Q106 185 112 185 Q118 185 115 193 Q113 198 110 198 Z" fill="white" stroke="#1a1a2e" stroke-width="1.5"/>
+</svg>
