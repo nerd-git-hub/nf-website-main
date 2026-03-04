@@ -1,9 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./aboutus.css";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function AboutUs() {
   const spidermanRef = useRef(null);
@@ -15,125 +21,132 @@ export default function AboutUs() {
   const tornPaperRef = useRef(null);
   const skylineRef = useRef(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Master timeline for coordinated animations
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  useGSAP(() => {
+    const scrollerNode = document.querySelector("#main-scroll-container");
 
-      // Torn paper edge slides down from top
-      tl.fromTo(
-        tornPaperRef.current,
-        { y: -100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
-      );
+    // Master timeline for coordinated animations
+    const tl = gsap.timeline({
+      defaults: { ease: "power3.out" },
+      scrollTrigger: {
+        trigger: pageRef.current,
+        start: "top 80%",
+        ...(scrollerNode && { scroller: scrollerNode }),
+      }
+    });
 
-      // City skyline rises from bottom
-      tl.fromTo(
-        skylineRef.current,
-        { y: 100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        "-=0.3"
-      );
+    // Torn paper edge slides down from top
+    tl.fromTo(
+      tornPaperRef.current,
+      { y: -100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
+    );
 
-      // Title animation - dramatic slam-in with rotation
-      tl.fromTo(
-        titleRef.current,
-        { x: -400, opacity: 0, scale: 0.3, rotate: -20 },
-        {
-          x: 0,
-          opacity: 1,
-          scale: 1,
-          rotate: -5,
-          duration: 0.9,
-          ease: "back.out(1.7)",
-        },
-        "-=0.4"
-      );
+    // City skyline rises from bottom
+    tl.fromTo(
+      skylineRef.current,
+      { y: 100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+      "-=0.3"
+    );
 
-      // Text box animation - scale and rotate in with comic pop
-      tl.fromTo(
-        textBoxRef.current,
-        { opacity: 0, scale: 0.2, rotate: -20, x: -100 },
-        {
-          opacity: 1,
-          scale: 1,
-          rotate: -3,
-          x: 0,
-          duration: 0.8,
-          ease: "back.out(1.5)",
-        },
-        "-=0.3"
-      );
+    // Title animation - dramatic slam-in with rotation
+    tl.fromTo(
+      titleRef.current,
+      { x: -400, opacity: 0, scale: 0.3, rotate: -20 },
+      {
+        x: 0,
+        opacity: 1,
+        scale: 1,
+        rotate: -5,
+        duration: 0.9,
+        ease: "back.out(1.7)",
+      },
+      "-=0.4"
+    );
 
-      // Spider-Man rope extends from top
-      tl.fromTo(
-        ropeRef.current,
-        { scaleY: 0, transformOrigin: "top center" },
-        { scaleY: 1, duration: 0.5, ease: "none" },
-        "-=0.3"
-      );
+    // Text box animation - scale and rotate in with comic pop
+    tl.fromTo(
+      textBoxRef.current,
+      { opacity: 0, scale: 0.2, rotate: -20, x: -100 },
+      {
+        opacity: 1,
+        scale: 1,
+        rotate: -3,
+        x: 0,
+        duration: 0.8,
+        ease: "back.out(1.5)",
+      },
+      "-=0.3"
+    );
 
-      // Spider-Man drops from above with bounce
-      tl.fromTo(
-        spidermanRef.current,
-        { y: -600, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          ease: "bounce.out",
-        },
-        "-=0.5"
-      );
+    // Spider-Man rope extends from top
+    tl.fromTo(
+      ropeRef.current,
+      { scaleY: 0, transformOrigin: "top center" },
+      { scaleY: 1, duration: 0.5, ease: "none" },
+      "-=0.3"
+    );
 
-      // Spider-Man gentle swinging after landing
-      gsap.to(spidermanRef.current, {
-        rotation: 6,
-        duration: 2.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: 2.5,
-        transformOrigin: "top center",
-      });
+    // Spider-Man drops from above with bounce
+    tl.fromTo(
+      spidermanRef.current,
+      { y: -600, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "bounce.out",
+        onComplete: () => {
+          // Spider-Man gentle swinging after landing
+          gsap.to(spidermanRef.current, {
+            rotation: 6,
+            duration: 2.5,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+            transformOrigin: "top center",
+          });
+        }
+      },
+      "-=0.5"
+    );
 
-      // Speech bubble pops in with spring
-      tl.fromTo(
-        speechBubbleRef.current,
-        { scale: 0, opacity: 0, rotate: -10 },
-        {
-          scale: 1,
-          opacity: 1,
-          rotate: 0,
-          duration: 0.6,
-          ease: "elastic.out(1, 0.5)",
-        },
-        "-=0.4"
-      );
+    // Speech bubble pops in with spring
+    tl.fromTo(
+      speechBubbleRef.current,
+      { scale: 0, opacity: 0, rotate: -10 },
+      {
+        scale: 1,
+        opacity: 1,
+        rotate: 0,
+        duration: 0.6,
+        ease: "elastic.out(1, 0.5)",
+        onComplete: () => {
+          // Subtle pulse on speech bubble
+          gsap.to(speechBubbleRef.current, {
+            scale: 1.03,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          });
+        }
+      },
+      "-=0.4"
+    );
 
-      // Subtle floating animation on the text box
+    // Subtle floating animation on the text box
+    tl.add(() => {
       gsap.to(textBoxRef.current, {
         y: -5,
         duration: 3,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
-        delay: 3,
       });
+    }, "-=0.2");
 
-      // Subtle pulse on speech bubble
-      gsap.to(speechBubbleRef.current, {
-        scale: 1.03,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: 3.5,
-      });
-    }, pageRef);
-
-    return () => ctx.revert();
-  }, []);
+  }, { scope: pageRef });
 
   return (
     <div className="aboutus-page" ref={pageRef}>
