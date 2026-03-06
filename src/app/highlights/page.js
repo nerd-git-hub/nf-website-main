@@ -27,19 +27,18 @@ export default function HighlightsPage() {
     // Fade in background and move it up slightly for a parallax feel
     tl.fromTo(".bg-image",
       { opacity: 0, y: 30 },
-      { opacity: 0.5, y: 0, duration: 1.5, ease: "power2.out" }
+      { opacity: 0.5, y: 0, duration: 0.8, ease: "power2.out" }
     )
-      // Slam the heading in from the left
       .fromTo(".heading-svg",
         { x: -50, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-        "-=1"
+        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+        "-=0.6"
       )
       // Staggered entry for the highlight rows
       .fromTo(".animate-box",
         { y: 60, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "power3.out" },
-        "-=0.5"
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power3.out" },
+        "-=0.3"
       );
   }, { scope: containerRef });
 

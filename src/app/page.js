@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import gsap from "gsap";
 import HighlightsPage from "./highlights/page";
 import AboutUs from "./aboutus/page";
@@ -14,6 +15,8 @@ export default function Home() {
   const nfLogoRef = useRef(null);
   const dottedTextureRef = useRef(null);
   const bgRef = useRef(null);
+  const comiRef = useRef(null);
+  const kazeRef = useRef(null);
   const mainScrollContainerRef = useRef(null);
 
   // Menu animation refs
@@ -35,28 +38,16 @@ export default function Home() {
       mainScrollContainerRef.current.style.overflowY = "hidden";
     }
 
-    // Background image scrolls up securely to 580px
-    gsap.fromTo(
-      bgRef.current,
-      { marginTop: 0 },
-      {
-        marginTop: -580,
-        duration: 1.5,
-        ease: "power3.inOut",
-        onComplete: () => {
-          // Unlock scroll after animation finishes
-          if (mainScrollContainerRef.current) {
-            mainScrollContainerRef.current.style.overflowY = "auto";
-          }
-        }
-      }
-    );
+    // Unlock scroll immediately or after minor delay since background animation is removed
+    if (mainScrollContainerRef.current) {
+      mainScrollContainerRef.current.style.overflowY = "auto";
+    }
 
     // NITTFEST text drops in from top
     gsap.fromTo(
       nittfestTextRef.current,
       { y: -200, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.2 }
+      { y: -10, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.2 }
     );
 
     // NF logo fades up from below
@@ -71,6 +62,18 @@ export default function Home() {
       dottedTextureRef.current,
       { opacity: 0 },
       { opacity: 1, duration: 1.0, ease: "power2.out", delay: 0.2 }
+    );
+
+    // Comifinal and Kazefinal collision animation
+    gsap.fromTo(
+      comiRef.current,
+      { xPercent: -200, yPercent: -50, opacity: 0 },
+      { xPercent: -95, yPercent: -50, opacity: 1, duration: 0.8, ease: "power3.out", delay: 0.3 }
+    );
+    gsap.fromTo(
+      kazeRef.current,
+      { xPercent: 100, yPercent: -50, opacity: 0 },
+      { xPercent: -5, yPercent: -50, opacity: 1, duration: 0.8, ease: "power3.out", delay: 0.3 }
     );
   }, []);
 
@@ -87,11 +90,20 @@ export default function Home() {
         duration: 0.8,
         ease: "power3.out"
       })
-      // 3. Lightning and rain effects from top-right -> bottom left
+      // 3. Lightning effects flicker and stay
       .fromTo(
         ".lightning-effect",
-        { x: "50vw", y: "-50vh", opacity: 0 },
-        { x: 0, y: 0, opacity: 0.8, duration: 0.6, stagger: 0.1, ease: "power2.out" },
+        { opacity: 0 },
+        {
+          keyframes: [
+            { opacity: 0.8, duration: 0.05 },
+            { opacity: 0.1, duration: 0.05 },
+            { opacity: 0.9, duration: 0.05 },
+            { opacity: 0.2, duration: 0.05 },
+            { opacity: 0.8, duration: 0.3 }
+          ],
+          stagger: 0.1
+        },
         "-=0.6"
       )
       // 4. Animate the menu content sliding in from the RIGHT
@@ -123,9 +135,46 @@ export default function Home() {
     setIsMenuOpen(prev => !prev);
   };
 
+  const scrollToSection = (id) => {
+    setIsMenuOpen(false); // Close the menu
+    setTimeout(() => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 400); // Small delay to let the menu closing animation start
+  };
+
   return (
     <div id="main-scroll-container" ref={mainScrollContainerRef} className="relative w-full snap-y snap-mandatory h-screen overflow-y-auto overflow-x-hidden scroll-smooth">
-      <main className="relative min-h-screen w-full shrink-0 snap-start bg-[#BC1D1A]">
+      {/* Persisting UI Elements */}
+      {/* Top Left NF Logo */}
+      <div className="fixed top-8 left-8 z-100 cursor-pointer hover:scale-110 transition-transform duration-200">
+        <img
+          src="/assets/landingpage/nf3dsvg.svg"
+          alt="NF Logo"
+          className="w-12 h-12 md:w-16 md:h-16 drop-shadow-lg"
+          onClick={() => {
+            if (mainScrollContainerRef.current) {
+              mainScrollContainerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+        />
+      </div>
+
+      {/* Thanos Hand Snap Hamburger Menu Button */}
+      <div
+        className="absolute top-8 right-8 z-100 cursor-pointer hover:scale-110 transition-transform duration-200 pointer-events-auto"
+        onClick={toggleMenu}
+      >
+        <img
+          src="/assets/landingpage/hamburger/thanos-handsnap.svg"
+          alt="Menu"
+          className="w-12 h-12 md:w-16 md:h-16 drop-shadow-lg"
+        />
+      </div>
+
+      <main id="home" className="relative min-h-screen w-full shrink-0 snap-start bg-[#BC1D1A]">
         {/* 1. Full Width Landing Page Asset */}
         <div className="relative w-full overflow-hidden">
 
@@ -135,49 +184,45 @@ export default function Home() {
             className="relative w-full h-auto block transform translate-x-[70px] scale-110 origin-right"
           >
             <img
-              src="/assets/landingpage/landingpagefinal.png"
+              src="/assets/landingpage/landingggg.jpeg"
               alt="NITTFEST Landing Page"
               className="w-full h-auto block"
             />
           </div>
 
           {/* NITTFEST Text SVG — top centre overlay */}
-          <div className="absolute top-0 left-0 right-0 flex flex-col items-center pointer-events-none gap-4">
-            <img
+          <div className="absolute top-[20px] left-0 right-0 flex flex-col items-center pointer-events-none gap-2">
+            <h1
               ref={nittfestTextRef}
-              src="/assets/landingpage/nittfest text.svg"
-              alt="NITTFEST"
-              className="w-[clamp(200px,40vw,560px)] h-auto"
-            />
-            <div className="absolute top-0 left-0 right-0 flex flex-col items-center pointer-events-none gap-4">
-              <img
-                src="/assets/landingpage/nf3dsvg.svg"
-                alt="NF Logo"
-                className="w-[clamp(200px,150vw,250px)] h-auto mt-40"
-              />
-            </div>
-
+              className="neon-text font-orbitron text-[clamp(40px,8vw,100px)] font-black tracking-[0.1em] md:tracking-[0.2em] uppercase whitespace-nowrap"
+            >
+              N I T T F E S T
+            </h1>
             <img
-              src="/assets/landingpage/comikaze.png"
-              alt="Black Cover"
-              className="absolute top-100 bottom-0 left-120 w-200 z-50 pointer-events-none"
+              ref={comiRef}
+              src="/assets/landingpage/comifinal.png"
+              alt="Comi"
+              className="absolute top-[291%] left-[48.8%] w-[400px] z-50 pointer-events-none opacity-0"
             />
+            <img
+              ref={kazeRef}
+              src="/assets/landingpage/kazefinal.png"
+              alt="Kaze"
+              className="absolute top-[275%] left-[51%] w-[445px] z-50 pointer-events-none opacity-0"
+            />
+
+            <h2
+              className="absolute top-[330%] left-1/2 transform -translate-x-1/2 text-black font-bangers text-3xl md:text-5xl tracking-wider z-50"
+              style={{
+                textShadow: "0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff, 0 0 80px #fff"
+              }}
+            >
+              MARCH 13-15
+            </h2>
 
 
           </div>
 
-        </div>
-
-        {/* Thanos Hand Snap Hamburger Menu Button */}
-        <div
-          className="fixed top-8 right-8 z-100 cursor-pointer hover:scale-110 transition-transform duration-200 pointer-events-auto"
-          onClick={toggleMenu}
-        >
-          <img
-            src="/assets/landingpage/hamburger/thanos-handsnap.svg"
-            alt="Menu"
-            className="w-12 h-12 md:w-16 md:h-16 drop-shadow-lg"
-          />
         </div>
 
         {/* Full Screen Menu Overlay */}
@@ -187,7 +232,7 @@ export default function Home() {
         >
           {/* Red background image replacing the black backdrop */}
           <img
-            src="/assets/landingpage/hamburger/redbgham.jpeg"
+            src="/assets/landingpage/bgham.png"
             alt="Menu Background"
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 z-0 ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
             onClick={toggleMenu} // Close if clicked outside
@@ -204,7 +249,7 @@ export default function Home() {
           <img
             src="/assets/landingpage/hamburger/strike.svg"
             alt="Lightning Strike"
-            className="lightning-effect absolute top-2 right-6 w-[8vw] max-w-[1800px] h-auto object-contain z-10 pointer-events-none drop-shadow-2xl opacity-0"
+            className="lightning-effect absolute top-[-170px] right-[-100px] w-[35vw] max-w-[1800px] h-auto object-contain z-10 pointer-events-none drop-shadow-2xl opacity-0"
           />
           <img
             src="/assets/landingpage/hamburger/flash.svg"
@@ -245,19 +290,19 @@ export default function Home() {
                   />
 
                   {[
-                    { text: "Home", path: "/", x: 7.16, y: 34.55, rot: -3.8, fontSize: "2.5cqw" },
-                    { text: "Highlights", path: "/highlights", x: 17.02, y: 49.56, rot: 270, fontSize: "3cqw" },
-                    { text: "About US", path: "/aboutus", x: 29.84, y: 33.56, rot: 3.3, fontSize: "3cqw" },
-                    { text: "Events", path: "/events", x: 42.59, y: 45.81, rot: -87, fontSize: "2.5cqw" },
-                    { text: "Sponsors", path: "/sponsors", x: 47.62, y: 52.81, rot: -85, fontSize: "2.5cqw" },
+                    { text: "Home", id: "home", x: 7.16, y: 34.55, rot: -3.8, fontSize: "2.5cqw" },
+                    { text: "Highlights", id: "highlights", x: 17.02, y: 49.56, rot: 270, fontSize: "3cqw" },
+                    { text: "About US", id: "aboutus", x: 29.84, y: 33.56, rot: 3.3, fontSize: "3cqw" },
+                    { text: "Events", id: "events", x: 42.59, y: 45.81, rot: -87, fontSize: "2.5cqw" },
+                    { text: "Sponsors", id: "sponsors", x: 47.62, y: 52.81, rot: -85, fontSize: "2.5cqw" },
                     { text: "Our Team", path: "/team", x: 60.30, y: 35.43, rot: -2.5, fontSize: "3cqw" },
                     { text: "Contact Us", path: "/contact", x: 73.95, y: 42.81, rot: -90, fontSize: "2.8cqw" },
                     { text: "Merchandise", path: "/merch", x: 79.80, y: 53.80, rot: -90, fontSize: "2.6cqw" },
-                    { text: "Support", path: " /support", x: 92.80, y: 61.80, rot: -97, fontSize: "2.6cqw" }
+                    { text: "Support", path: "/support", x: 92.80, y: 61.80, rot: -97, fontSize: "2.6cqw" }
                   ].map((item, i) => (
                     <div
                       key={i}
-                      onClick={() => router.push(item.path)}
+                      onClick={() => item.path ? router.push(item.path) : scrollToSection(item.id)}
                       className="absolute text-white comic-text font-bold text-center cursor-pointer transition-colors duration-300 hover:text-yellow-400 z-10 whitespace-pre-line"
                       style={{
                         left: `${item.x}%`,
@@ -292,21 +337,35 @@ export default function Home() {
 
       </main>
 
-      <section className="relative w-full h-screen shrink-0 snap-start">
+      <section id="aboutus" className="relative w-full h-screen shrink-0 snap-start">
         <AboutUs />
       </section>
 
-      <section className="relative w-full min-h-screen shrink-0 snap-start">
+      <section id="highlights" className="relative w-full min-h-screen shrink-0 snap-start">
         <HighlightsPage />
       </section>
 
-      <section className="relative w-full h-screen shrink-0 snap-start">
+      <section id="events" className="relative w-full h-screen shrink-0 snap-start">
         <NITTFESTEvents />
       </section>
 
-      <section className="relative w-full min-h-screen shrink-0 snap-start">
+      <section id="sponsors" className="relative w-full min-h-screen shrink-0 snap-start">
         <SponsorsPage />
       </section>
+
+      {/* Footer Section */}
+      <footer className="w-full bg-black py-4 px-8 flex flex-col md:flex-row items-center justify-center gap-4 shrink-0 snap-end z-50 text-white font-orbitron border-t-2 border-nf-red">
+        <p className="text-sm md:text-base opacity-80 tracking-widest text-center">
+          MADE BY NITTFEST WEBOPS
+        </p>
+        <div className="hidden md:block w-px h-4 bg-white opacity-40"></div>
+        <Link
+          href="/contact"
+          className="text-sm md:text-base text-nf-red-bright hover:text-white transition-colors duration-300 font-bold uppercase tracking-widest"
+        >
+          Contact Us
+        </Link>
+      </footer>
     </div>
   );
 }

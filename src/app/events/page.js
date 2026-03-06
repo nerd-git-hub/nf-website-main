@@ -65,15 +65,17 @@ export default function NITTFESTEvents() {
 
   }, { scope: containerRef });
 
-  // Exact Figma Gradient
-  const figmaGradient = 'linear-gradient(180deg, #000000 0%, #570000 11%, #690000 22%, #7C0000 33%, #900000 44%, #A50E00 56%, #BB2A00 67%, #D13E00 78%, #E7520C 89%, #FE6522 100%)';
-
   return (
     <main
       ref={containerRef}
       className="relative w-screen h-screen overflow-hidden"
-      style={{ background: figmaGradient }}
     >
+      {/* Background Image */}
+      <img
+        src="/assets/landingpage/events-sunburst-bg.jpeg"
+        alt="Events Background"
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      />
       {/* 1. EVENTS TEXT */}
       <div className="absolute top-8 left-12 z-20 w-[25%] max-w-[350px]">
         <div ref={eventsRef}>

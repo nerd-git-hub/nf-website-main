@@ -38,15 +38,15 @@ export default function AboutUs() {
     tl.fromTo(
       tornPaperRef.current,
       { y: -100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
+      { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }
     );
 
     // City skyline rises from bottom
     tl.fromTo(
       skylineRef.current,
       { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
-      "-=0.3"
+      { y: 0, opacity: 1, duration: 0.5, ease: "power2.out" },
+      "-=0.2"
     );
 
     // Title animation - dramatic slam-in with rotation
@@ -58,10 +58,10 @@ export default function AboutUs() {
         opacity: 1,
         scale: 1,
         rotate: -5,
-        duration: 0.9,
+        duration: 0.6,
         ease: "back.out(1.7)",
       },
-      "-=0.4"
+      "-=0.3"
     );
 
     // Text box animation - scale and rotate in with comic pop
@@ -73,18 +73,18 @@ export default function AboutUs() {
         scale: 1,
         rotate: -3,
         x: 0,
-        duration: 0.8,
+        duration: 0.5,
         ease: "back.out(1.5)",
       },
-      "-=0.3"
+      "-=0.2"
     );
 
     // Spider-Man rope extends from top
     tl.fromTo(
       ropeRef.current,
       { scaleY: 0, transformOrigin: "top center" },
-      { scaleY: 1, duration: 0.5, ease: "none" },
-      "-=0.3"
+      { scaleY: 1, duration: 0.3, ease: "none" },
+      "-=0.2"
     );
 
     // Spider-Man drops from above with bounce
@@ -94,7 +94,7 @@ export default function AboutUs() {
       {
         y: 0,
         opacity: 1,
-        duration: 1.2,
+        duration: 0.8,
         ease: "bounce.out",
         onComplete: () => {
           // Spider-Man gentle swinging after landing
@@ -108,7 +108,7 @@ export default function AboutUs() {
           });
         }
       },
-      "-=0.5"
+      "-=0.3"
     );
 
     // Speech bubble pops in with spring
@@ -119,7 +119,7 @@ export default function AboutUs() {
         scale: 1,
         opacity: 1,
         rotate: 0,
-        duration: 0.6,
+        duration: 0.4,
         ease: "elastic.out(1, 0.5)",
         onComplete: () => {
           // Subtle pulse on speech bubble
@@ -132,7 +132,7 @@ export default function AboutUs() {
           });
         }
       },
-      "-=0.4"
+      "-=0.2"
     );
 
     // Subtle floating animation on the text box

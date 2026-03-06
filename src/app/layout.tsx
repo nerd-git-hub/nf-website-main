@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   title: "NITTFEST '26",
   description: "The Annual Interdepartmental Cultural Extravaganza of NIT Trichy",
   icons: {
-    icon: "/logo.png",
+    icon: "/assets/landingpage/nf3dsvg.svg",
   },
 };
 
@@ -46,6 +46,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet" />
+      </head>
       <body
         className={`${bangers.variable} ${roboto.variable} ${inter.variable} antialiased bg-comic-red`}
         style={{
