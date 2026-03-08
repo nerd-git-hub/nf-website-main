@@ -23,14 +23,14 @@ const barlowCondensed = Barlow_Condensed({
 // Temporary placeholder data
 const teamMembers = [
     {
-        name: "KETHAN REDDY",
-        role: "CHAIRPERSON",
+        name: "THARUN AADESH",
+        role: "OVERALL COORDINATOR",
         image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
-        name: "THARUN AADESH",
-        role: "OVERALL COORDINATOR",
+        name: "KETHAN REDDY",
+        role: "CHAIRPERSON",
         image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
