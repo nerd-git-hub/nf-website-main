@@ -25,124 +25,124 @@ const teamMembers = [
     {
         name: "THARUN AADESH",
         role: "OVERALL COORDINATOR",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "tharun.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "KETHAN REDDY",
         role: "CHAIRPERSON",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "kethan.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "SAICHARAN",
         role: "TREASURER",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "sai.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "SANJAI KUMAR",
-        team: "WebOps",
+        team: "WEBOPS",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "sanjai.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "AMITESH",
-        team: "WebOps",
+        team: "WEBOPS",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "amitesh.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "VARUN HARSHA",
         team: "PAIN",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "varunH.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "RAHUL PANDIYAN",
         team: "DESIGN",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "rahul.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "ANGELINE INIYA",
         team: "DESIGN",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "angeline.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "SUDHARSHANARAM",
         team: "EVENTS",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "sudh.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "ROSHINI",
         team: "EVENTS",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "rosh.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "VENKAT",
         team: "MARKETING",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "venkat.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "VARUN CHANDAR",
         team: "MARKETING",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "varunC.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "ANISH NARAYANAN",
         team: "ORGANIZING COMMITTEE",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "anish.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "DHARUNIKA SARASWATHY",
         team: "ORGANIZING COMMITTEE",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "dhar.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "NAREN SRINIVAS",
         team: "PRNC",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "naren.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "JEFFREY JAYAPACKIYARAJ",
         team: "PRNC",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "jeff.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "GUGHAN SRIDHAR",
         team: "AMBIENCE",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "gu.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
     {
         name: "NANDHINEE",
         team: "AMBIENCE",
         role: "HEAD",
-        image: "/sanjai.png", // Assuming existence; fallback to silhouette via CSS if not used
+        image: "nan.jpeg", // Assuming existence; fallback to silhouette via CSS if not used
         barcode: "*NITTFESTWEBOPS*"
     },
 ];
@@ -284,7 +284,7 @@ export default function Team() {
                             <span className="control expand"></span>
                         </div>
                         <div className="window-title">C:/HQ/NITTFEST/Team/profile</div>
-                        <a href="/" className="no-underline ml-auto"><div className="window-close-btn hover:scale-110 transition-transform cursor-pointer">X</div></a>
+                        <a href="/" className="window-close-btn">X</a>
                     </div>
                     <div className="window-content top-window-content">
                         <span className={`source-ip ${barlowCondensed.className}`}>SOURCE: 127.0.0.1</span>
@@ -300,7 +300,7 @@ export default function Team() {
                             <span className="control expand"></span>
                         </div>
                         <div className="window-title">CLASSIFIED.EXE</div>
-                        <a href="/" className="no-underline ml-auto"><div className="window-close-btn hover:scale-110 transition-transform cursor-pointer">X</div></a>
+                        <a href="/" className="window-close-btn">X</a>
                     </div>
                     <div className="window-content main-window-content">
                         <h1 className="team-title">THE TEAM</h1>
@@ -376,7 +376,7 @@ export default function Team() {
                 <div className={`ui-window terminal-window ${barlowCondensed.className}`} ref={terminalWindowRef}>
                     <div className="window-header terminal-header">
                         <div className="window-title">Terminal.exe</div>
-                        <a href="/" className="no-underline ml-auto"><div className="window-close-btn hover:scale-110 transition-transform cursor-pointer">X</div></a>
+                        <a href="/" className="window-close-btn">X</a>
                     </div>
                     <div className="window-content terminal-content">
                         <p>access_granted();</p>
