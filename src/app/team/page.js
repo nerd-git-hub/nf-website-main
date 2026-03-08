@@ -159,6 +159,16 @@ export default function Team() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const currentMember = teamMembers[currentIndex];
 
+    // Preload all team member images into browser cache on mount
+    useEffect(() => {
+        teamMembers.forEach((member) => {
+            if (member.image) {
+                const img = new window.Image();
+                img.src = member.image;
+            }
+        });
+    }, []);
+
     const nextMember = () => {
 
         gsap.to(idCardRef.current, {
