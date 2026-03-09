@@ -19,7 +19,6 @@ export default function Home() {
   const nfLogoRef = useRef(null);
   const dottedTextureRef = useRef(null);
   const bgRef = useRef(null);
-  const marvelRef = useRef(null);
   const mainScrollContainerRef = useRef(null);
 
   // Menu animation refs
@@ -62,14 +61,7 @@ export default function Home() {
           );
         }
 
-        // Marvel logo animation
-        if (marvelRef.current) {
-          gsap.fromTo(
-            marvelRef.current,
-            { scale: 0.5, opacity: 0 },
-            { scale: 1, opacity: 1, duration: 1.2, ease: "power4.out", delay: 0.5 }
-          );
-        }
+
 
         // Dotted texture fades in after logo
         if (dottedTextureRef.current) {
@@ -205,21 +197,15 @@ export default function Home() {
 
           {/* Comic Characters and Date — Centered on screen */}
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none pt-[5vh]">
-            <div className="relative w-full max-w-[1200px] h-[50vh] flex flex-col items-center justify-center">
-              <h1
-                ref={marvelRef}
-                className="text-[15vw] md:text-[12rem] font-black tracking-tighter leading-none m-0 p-0 text-center w-full uppercase bg-clip-text text-transparent opacity-0 select-none"
+            <div className="relative w-full max-w-[1200px] h-[50vh] flex items-center justify-center">
+              <h2
+                className="absolute top-[-18%] md:top-[-5%] left-1/2 transform -translate-x-1/2 font-bangers text-4xl md:text-8xl tracking-widest z-50 text-center w-full px-4"
                 style={{
-                  backgroundImage: 'url("https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHRraGI3NjExNHRraGI3NjExNHRraGI3NjExNHRraGI3NjExNHRraGI3NjExNHRraGZfaWQmZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/3o7TKv6MgQfVf6HkLm/giphy.gif")',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  WebkitBackgroundClip: 'text',
-                  filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.3))'
+                  color: '#FFD700',
+                  WebkitTextStroke: '2px black',
+                  dropShadow: '0 4px 8px rgba(0,0,0,0.8)'
                 }}
               >
-                MARVEL
-              </h1>
-              <h2 className="text-[#FFD700] font-bangers text-3xl md:text-7xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.8)] tracking-widest z-50 text-center w-full px-4 mt-[-2%] italic">
                 MARCH 13-15
               </h2>
             </div>
