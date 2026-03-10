@@ -286,8 +286,8 @@ export default function Home() {
                     { text: "Sponsors", id: "sponsors", x: 47.62, y: 52.81, rot: -85, fontSize: "clamp(18px, 3cqw, 30px)", w: "50%", h: "10%" },
                     { text: "Our Team", path: "/team", x: 60.30, y: 35.43, rot: -2.5, fontSize: "clamp(22px, 3.5cqw, 35px)", w: "12%", h: "70%" },
                     { text: "Contact Us", path: "/contact", x: 73.95, y: 42.81, rot: -90, fontSize: "clamp(18px, 3.2cqw, 32px)", w: "60%", h: "10%" },
-                    { text: "Merchandise", path: "/merch", x: 79.80, y: 53.80, rot: -90, fontSize: "clamp(18px, 3cqw, 30px)", w: "50%", h: "10%" },
-                    { text: "Support", path: "/support", x: 92.80, y: 61.80, rot: -97, fontSize: "clamp(18px, 3cqw, 30px)", w: "50%", h: "10%" }
+                    { text: "Merchandise", path: "/merch", x: 79.80, y: 53.80, rot: -90, fontSize: "clamp(18px, 3cqw, 30px)", w: "60%", h: "22%" },
+                    { text: "Support", path: "/support", x: 92.80, y: 61.80, rot: -97, fontSize: "clamp(18px, 3cqw, 30px)", w: "50%", h: "20%" }
                   ].map((item, i) => (
                     <div
                       key={i}

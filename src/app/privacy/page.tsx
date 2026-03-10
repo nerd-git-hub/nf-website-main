@@ -16,7 +16,7 @@ const PrivacyPolicy = () => {
                     <p className="update-date">LAST UPDATED: FEBRUARY 2026</p>
 
                     <section>
-                        <p>NITTFEST is the annual inter-department cultural fest of the National Institute of Technology Tiruchirappalli.</p>
+                        <p>NITTFEST is the official mobile application of the annual inter-department cultural fest of the National Institute of Technology Tiruchirappalli.</p>
                         <p>This Privacy Policy explains how we collect, use, and protect your information when you use the NITTFEST app.</p>
                     </section>
 

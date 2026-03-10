@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import Link from 'next/link';
 import emailjs from '@emailjs/browser';
 import './support.css';
 
@@ -56,15 +55,6 @@ const SupportPage = () => {
 
     return (
         <div className="support-container">
-            {/* Top Left NF Logo */}
-            <a href="/" className="fixed top-4 left-4 md:top-8 md:left-8 z-100 cursor-pointer hover:scale-110 transition-transform duration-200">
-                <img
-                    src="/assets/landingpage/nf3dsvg.svg"
-                    alt="NF Logo"
-                    className="w-10 h-10 md:w-16 md:h-16 drop-shadow-lg"
-                />
-            </a>
-
             <div className="support-card">
                 <h2 className="title">HERO SUPPORT</h2>
                 <p className="subtitle">SEND A SIGNAL TO HEADQUARTERS!</p>
@@ -96,10 +86,6 @@ const SupportPage = () => {
                     )}
                 </form>
             </div>
-
-            <Link href="/privacy" className="privacy-btn">
-                PRIVACY POLICY
-            </Link>
         </div>
     );
 };

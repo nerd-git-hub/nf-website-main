@@ -75,14 +75,14 @@
     background: var(--background);
     color: var(--foreground);
     font-family: var(--font-inter);
-    cursor: url('/assets/cursor/cursorfinal_small.png') 32 32, auto !important;
+    cursor: url('/assets/cursor/futuristic_cursor.png') 1 1, auto !important;
   }
 
   a,
   button,
   [role="button"],
   .cursor-pointer {
-    cursor: url('/assets/cursor/cursorfinal_small.png') 32 32, pointer !important;
+    cursor: url('/assets/cursor/futuristic_cursor.png') 1 1, pointer !important;
   }
 
   img {

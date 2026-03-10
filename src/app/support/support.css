@@ -194,35 +194,3 @@
         display: none;
     }
 }
-
-/* Privacy Button */
-.privacy-btn {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 15px;
-    background-color: var(--color-comic-yellow);
-    color: var(--color-comic-black);
-    border: 3px solid var(--color-comic-black);
-    border-radius: 4px;
-    font-size: 1.2rem;
-    font-family: var(--font-bangers);
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.1s ease;
-    box-shadow: 4px 4px 0 var(--color-comic-black);
-    letter-spacing: 1px;
-    z-index: 20;
-    text-decoration: none;
-}
-
-.privacy-btn:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--color-comic-black);
-    background-color: #ffd600;
-}
-
-.privacy-btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0 var(--color-comic-black);
-}
